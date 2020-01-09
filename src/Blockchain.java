@@ -4,7 +4,7 @@ import java.util.List;
 public class Blockchain {
     private static Blockchain instance = null;
 
-    int prefix = 2;
+    int prefix;
     public List<Block> blockchain;
     String prefixString;
 
