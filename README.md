@@ -1,29 +1,15 @@
 # README #
 
-Sample README for SorEx Blockchain Application
+SorEx is a Blockchain, made for educational purposes by Sorbonne University undergraduate students.
+Supervised by Maria POTOP-BUTUCARU.
 
-### What is this repository for? ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+### Abstract ###
 
-### How do I get set up? ###
-
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+* In development
 
 ### Contribution guidelines ###
 
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+* [Massil TAGUEMOUT](mailto:maxtag@vivaldi.net)
+* [Gabriel LEFFAD](mailto:gabylef@hotmail.fr)
+* [Pierre PHETSINORATH](mailto:phpierre@hotmail.fr)
