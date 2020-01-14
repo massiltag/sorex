@@ -36,7 +36,7 @@ public class Client {
 			System.out.println("[+] Main menu");
 			System.out.println("\t[1] Check balance");
 			System.out.println("\t[2] Check notifications");
-			System.out.println("\t[2] Send money");
+			System.out.println("\t[3] Send money");
 			System.out.println("\t[0] Exit");
 			System.out.print("\n> ");
 
@@ -58,6 +58,7 @@ public class Client {
 				case "0":
 					System.out.println("See ya !");
 					clientSocket.close();
+					System.exit(0);
 			}
 		} while (!choice.equals("0"));
 	}
