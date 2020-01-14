@@ -82,23 +82,33 @@ public class Client {
 
 	public static void sendMoney(Socket socket) throws IOException {
 		System.out.print("\n");
+		boolean valid = false;
 		Scanner sc = new Scanner(System.in);
 		String destAddress;
 		double amount = 0;
 		System.out.print("> Destination IP address : ");
 		destAddress = sc.nextLine();
 		System.out.print("> Amount you want to send : ");
-		amount = sc.nextDouble();
+		do {
+			try {
+				amount = sc.nextDouble();
+				valid = false;
+			} catch (Exception e) {
+				valid = true;
+			}
+		} while (valid);
 
 		if (amount > getBalance()) {
-			System.out.println("Insufficient balance");
+			System.out.println("Insufficient balance.");
+		} else if (amount <= 0) {
+			System.out.println("Invalid amount.");
 		} else {
 			ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream()); // toServer
 
 			Transaction transaction = new Transaction(getIP(), destAddress, amount);
 			oos.writeObject(transaction);
 		}
-	}
+		}
 
 	public static void transactionReceiver(Socket socket) {
 		Runnable task = () -> {
@@ -122,10 +132,12 @@ public class Client {
 						}
 					} else {    // Receiving Money
 						setBalance(getBalance() + transaction.getValue());
-						System.out.println("[+] Received " + transaction.getValue() + " from " + transaction.getSenderIP());
+						System.out.println("[+] Received " + transaction.getValue() + " SorEx from " + transaction.getSenderIP());
 						addNotification("[+] " + getDateTime() + " | Received " + transaction.getValue() + " SorEx from " + transaction.getSenderIP());
 					}
 				} catch (Exception e) {
+					System.out.println("Disconnected. Exiting.");
+					exit();
 				}
 				System.out.print("> ");
 			}
@@ -195,5 +207,13 @@ public class Client {
 
 	public static List<String> getNotifications() {
 		return notifications;
+	}
+
+	public static void exit() {
+		try {
+			clientSocket.close();
+		} catch (IOException ex) {
+		}
+		System.exit(0);
 	}
 }
