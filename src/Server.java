@@ -14,9 +14,12 @@ public class Server {
 	private static List<Socket> connectedClients = new ArrayList<>();
 
 	public static void main(String[] args) throws Exception {
+		System.out.print("Welcome to\n" + StringUtil.ANSI_PURPLE);
 		showIntro();
+		System.out.print(StringUtil.ANSI_RESET);
 		System.out.println(" - Enter [" + StringUtil.ANSI_YELLOW + "show" + StringUtil.ANSI_RESET + "] to show Blockchain\n" +
-				" - Enter [" + StringUtil.ANSI_YELLOW + "exit" + StringUtil.ANSI_RESET + "] to exit.");
+				" - Enter [" + StringUtil.ANSI_YELLOW + "verify" + StringUtil.ANSI_RESET + "] to verify blockchain. \n" +
+				" - Enter [" + StringUtil.ANSI_YELLOW + "stop" + StringUtil.ANSI_RESET + "] to stop server.");
 		initSocket();
 
 		// Starting Threads
@@ -125,7 +128,14 @@ public class Server {
 					case "show":
 						showBlocks();
 						break;
-					case "exit":
+					case "verify":
+						boolean ok = blockchain.verify();
+						if (ok)
+							System.out.println("Blockchain is " + StringUtil.ANSI_GREEN + "OK" + StringUtil.ANSI_RESET + ".");
+						else
+							System.out.println("Blockchain is " + StringUtil.ANSI_RED + "KO" + StringUtil.ANSI_RESET + ".");
+						break;
+					case "stop":
 						exit();
 						break;
 					default:
@@ -137,9 +147,11 @@ public class Server {
 	}
 
 	public static void showBlocks() {
+		System.out.print(StringUtil.ANSI_YELLOW);
 		for (Block block : blockchain.getBlockchain()) {
 			System.out.print(block.toString());
 		}
+		System.out.print(StringUtil.ANSI_RESET);
 	}
 
 	public static void exit() {
@@ -154,7 +166,6 @@ public class Server {
 	}
 
 	public static void showIntro() {
-		System.out.println("Welcome to");
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader("./SorEx.txt"));
 			String buffer;
