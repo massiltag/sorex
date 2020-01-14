@@ -38,7 +38,7 @@ public class StringUtil {
 
 	public static String timestampConverter(long timestamp) {
 		Date date = new Date(timestamp * 1000);
-		Format dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		Format dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		return dateFormat.format(date);
 	}
 
