@@ -15,8 +15,8 @@ public class Server {
 
 	public static void main(String[] args) throws Exception {
 		showIntro();
-		System.out.println(" - Enter [" + StringUtil.ANSI_WHITE + "show" + StringUtil.ANSI_RESET + "] to show Blockchain\n" +
-				" - Enter [" + StringUtil.ANSI_WHITE + "exit" + StringUtil.ANSI_RESET + "] to exit.");
+		System.out.println(" - Enter [" + StringUtil.ANSI_YELLOW + "show" + StringUtil.ANSI_RESET + "] to show Blockchain\n" +
+				" - Enter [" + StringUtil.ANSI_YELLOW + "exit" + StringUtil.ANSI_RESET + "] to exit.");
 		initSocket();
 
 		// Starting Threads
