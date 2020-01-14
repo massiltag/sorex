@@ -30,7 +30,7 @@ public class Server {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		System.out.println("Running " + StringUtil.ANSI_BLUE + "Sor" + StringUtil.ANSI_RED + "Ex" + StringUtil.ANSI_RESET + " Server on port " + port + "(" + StringUtil.ANSI_PURPLE + getIP() + StringUtil.ANSI_RESET + ")");
+		System.out.println("Running " + StringUtil.ANSI_BLUE + "Sor" + StringUtil.ANSI_RED + "Ex" + StringUtil.ANSI_RESET + " Server on port " + port + " (" + StringUtil.ANSI_PURPLE + getIP() + StringUtil.ANSI_RESET + ")");
 	}
 
 	private static void connectionListener() {
