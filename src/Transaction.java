@@ -1,36 +1,53 @@
+import java.io.Serializable;
 
-public class Transaction {
-    private Client from;
+public class Transaction implements Serializable {
+    private String senderIP;
 
-    private Client to;
+    private String receiverIP;
 
-    private float value;
+    private double value;
+
+    private String control = ""; // Control value (ACK or ERR)
+
+    public Transaction(String senderIP, String receiverIP, double value) {
+        this.senderIP = senderIP;
+        this.receiverIP = receiverIP;
+        this.value = value;
+    }
 
     public String toString(){
-        return "From " + from.getName() + " (id: " + from.getId() + "), to " + to.getName() + " (id: " + to.getId() + "), value: " + value + " SorEx";
+        return "From " + senderIP + " to " + receiverIP + ", value: " + value + " SorEx";
     }
 
-    public Client getFrom() {
-        return from;
+    public String getSenderIP() {
+        return senderIP;
     }
 
-    public void setFrom(Client from) {
-        this.from = from;
+    public void setSenderIP(String senderIP) {
+        this.senderIP = senderIP;
     }
 
-    public Client getTo() {
-        return to;
+    public String getReceiverIP() {
+        return receiverIP;
     }
 
-    public void setTo(Client to) {
-        this.to = to;
+    public void setReceiverIP(String receiverIP) {
+        this.receiverIP = receiverIP;
     }
 
-    public float getValue() {
+    public double getValue() {
         return value;
     }
 
-    public void setValue(float value) {
+    public void setValue(double value) {
         this.value = value;
+    }
+
+    public String getControlValue() {
+        return control;
+    }
+
+    public void setControlValue(String control) {
+        this.control = control;
     }
 }
