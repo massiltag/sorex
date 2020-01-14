@@ -36,14 +36,25 @@ public class Blockchain {
 
     public Block addBlock(Transaction data) {
         Block block;
-        if (blockchain.size() == 0) {
+	    if (this.isEmpty()) {
             block = Block.genesisBlock(data);
         } else {
-            block = Block.newBlock(blockchain.get(blockchain.size() - 1).getHash(),data);
+		    block = Block.newBlock(getLastHash(), data);
         }
-        block.mine(this.prefix);
+	    block.setHash(block.mine(this.prefix));
         blockchain.add(block);
         return block;
     }
 
+	public Block getLastBlock() {
+		return this.blockchain.get(this.blockchain.size() - 1);
+	}
+
+	public String getLastHash() {
+		return this.getLastBlock().getHash();
+	}
+
+	public boolean isEmpty() {
+		return blockchain.size() == 0;
+	}
 }
