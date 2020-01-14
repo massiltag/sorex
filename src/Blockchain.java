@@ -57,4 +57,8 @@ public class Blockchain {
 	public boolean isEmpty() {
 		return blockchain.size() == 0;
 	}
+
+	public List<Block> getBlockchain() {
+		return blockchain;
+	}
 }
