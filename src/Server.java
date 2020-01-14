@@ -15,7 +15,7 @@ public class Server {
 
 	public static void main(String[] args) throws Exception {
 		showIntro();
-		System.out.print(" - Enter [" + StringUtil.ANSI_WHITE + "show" + StringUtil.ANSI_RESET + "] to show Blockchain\n" +
+		System.out.println(" - Enter [" + StringUtil.ANSI_WHITE + "show" + StringUtil.ANSI_RESET + "] to show Blockchain\n" +
 				" - Enter [" + StringUtil.ANSI_WHITE + "exit" + StringUtil.ANSI_RESET + "] to exit.");
 		initSocket();
 
@@ -154,6 +154,7 @@ public class Server {
 	}
 
 	public static void showIntro() {
+		System.out.println("Welcome to");
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader("./SorEx.txt"));
 			String buffer;
