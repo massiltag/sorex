@@ -1,112 +1,130 @@
+import java.text.DateFormat;
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
+import java.util.Date;
 
 public class Block {
-    static int nbBlocks = 0;
-    private String previousHash;
+	static int nbBlocks = 0;
+	private String previousHash;
 
-    private String hash;
+	private String hash;
 
-    private Transaction data;
+	private Transaction data;
 
-    private int index;
+	private int index;
 
-    private int nonce;
+	private int nonce;
 
-    private long timestamp;
+	private long timestamp;
 
-    public Block(String previousHash, Transaction data, long timestamp) {
-        this.previousHash = previousHash;
-        this.data = data;
-        this.timestamp = timestamp;
-        this.nonce = 0;
-        this.index = nbBlocks;
-        nbBlocks++;
-        this.hash = hash();
-    }
+	public Block(String previousHash, Transaction data, long timestamp) {
+		this.previousHash = previousHash;
+		this.data = data;
+		this.timestamp = timestamp;
+		this.nonce = 0;
+		this.index = nbBlocks;
+		nbBlocks++;
+		this.hash = hash();
+	}
 
-    public String hash() {
-        String input = previousHash
-                + data.toString()
-                + timestamp
-                + nonce;
-        return StringUtil.SHA256(input);
-    }
+	public String toString() {
+		return "================================================================================\n"
+				+ "+ Index\t= " + getIndex() + "\n"
+				+ "+ Previous hash\t= " + this.getPreviousHash() + "\n"
+				+ "+ Transaction\t= " + this.getData().toString() + "\n"
+				+ "+ Timestamp\t=" + timestampConverter(this.getTimestamp()) + "\n"
+				+ "+ Nonce\t= " + getNonce() + "\n"
+				+ "+ Hash\t= " + getHash() + "\n"
+				+ "================================================================================\n";
+	}
 
-    public static Block genesisBlock(Transaction data){
-        return newBlock(StringUtil.zeros(64),data);
-    }
+	public String hash() {
+		String input = previousHash
+				+ data.toString()
+				+ timestamp
+				+ nonce;
+		return StringUtil.SHA256(input);
+	}
 
-	// TODO setHash
-    public static Block newBlock(String previousHash, Transaction transaction) {
-        Block block = new Block(previousHash, transaction, Instant.now().getEpochSecond());
-        // HERE
-        return block;
-    }
+	public static Block genesisBlock(Transaction data){
+		return newBlock(StringUtil.zeros(64),data);
+	}
 
-    public String mine(int prefix){
-        String prefixString = new String(new char[prefix]).replace('\0', '0');
-        while (!hash.substring(0, prefix).equals(prefixString)) {
-            nonce++;
-            hash = hash();
-        }
-        return hash;
-    }
+	public static Block newBlock(String previousHash, Transaction transaction) {
+		Block block = new Block(previousHash, transaction, Instant.now().getEpochSecond());
+		return block;
+	}
 
+	public String mine(int prefix){
+		String prefixString = new String(new char[prefix]).replace('\0', '0');
+		while (!hash.substring(0, prefix).equals(prefixString)) {
+			nonce++;
+			hash = hash();
+		}
+		return hash;
+	}
 
-    // Getters and Setters
-    public static int getNbBlocks() {
-        return nbBlocks;
-    }
+	public String timestampConverter(long timestamp) {
+		Date date = new Date(timestamp);
+		Format dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		return dateFormat.format(date);
+	}
 
-    public static void setNbBlocks(int nbBlocks) {
-        Block.nbBlocks = nbBlocks;
-    }
+	// Getters and Setters
+	public static int getNbBlocks() {
+		return nbBlocks;
+	}
 
-    public String getPreviousHash() {
-        return previousHash;
-    }
+	public static void setNbBlocks(int nbBlocks) {
+		Block.nbBlocks = nbBlocks;
+	}
 
-    public void setPreviousHash(String previousHash) {
-        this.previousHash = previousHash;
-    }
+	public String getPreviousHash() {
+		return previousHash;
+	}
 
-    public String getHash() {
-        return hash;
-    }
+	public void setPreviousHash(String previousHash) {
+		this.previousHash = previousHash;
+	}
 
-    public void setHash(String hash) {
-        this.hash = hash;
-    }
+	public String getHash() {
+		return hash;
+	}
 
-    public Transaction getData() {
-        return data;
-    }
+	public void setHash(String hash) {
+		this.hash = hash;
+	}
 
-    public void setData(Transaction data) {
-        this.data = data;
-    }
+	public Transaction getData() {
+		return data;
+	}
 
-    public int getIndex() {
-        return index;
-    }
+	public void setData(Transaction data) {
+		this.data = data;
+	}
 
-    public void setIndex(int index) {
-        this.index = index;
-    }
+	public int getIndex() {
+		return index;
+	}
 
-    public int getNonce() {
-        return nonce;
-    }
+	public void setIndex(int index) {
+		this.index = index;
+	}
 
-    public void setNonce(int nonce) {
-        this.nonce = nonce;
-    }
+	public int getNonce() {
+		return nonce;
+	}
 
-    public long getTimestamp() {
-        return timestamp;
-    }
+	public void setNonce(int nonce) {
+		this.nonce = nonce;
+	}
 
-    public void setTimestamp(long timestamp) {
-        this.timestamp = timestamp;
-    }
+	public long getTimestamp() {
+		return timestamp;
+	}
+
+	public void setTimestamp(long timestamp) {
+		this.timestamp = timestamp;
+	}
 }
