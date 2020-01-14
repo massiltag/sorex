@@ -1,5 +1,8 @@
 import java.nio.CharBuffer;
 import java.security.MessageDigest;
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class StringUtil {
 
@@ -31,6 +34,12 @@ public class StringUtil {
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
+	}
+
+	public static String timestampConverter(long timestamp) {
+		Date date = new Date(timestamp * 1000);
+		Format dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		return dateFormat.format(date);
 	}
 
 

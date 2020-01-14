@@ -29,14 +29,14 @@ public class Block {
 	}
 
 	public String toString() {
-		return "=======================================" + getIndex() + "========================================\n"
-				+ "+ Index\t= " + getIndex() + "\n"
+		return "=========================================== " + getIndex() + " ============================================\n"
+				+ "+ Index\t\t= " + getIndex() + "\n"
 				+ "+ Previous hash\t= " + this.getPreviousHash() + "\n"
 				+ "+ Transaction\t= " + this.getData().toString() + "\n"
-				+ "+ Timestamp\t=" + timestampConverter(this.getTimestamp()) + "\n"
-				+ "+ Nonce\t= " + getNonce() + "\n"
-				+ "+ Hash\t= " + getHash() + "\n"
-				+ "================================================================================\n";
+				+ "+ Timestamp\t= " + StringUtil.timestampConverter(this.getTimestamp()) + "\n"
+				+ "+ Nonce\t\t= " + getNonce() + "\n"
+				+ "+ Hash\t\t= " + getHash() + "\n"
+				+ "==========================================================================================\n";
 	}
 
 	public String hash() {
@@ -63,12 +63,6 @@ public class Block {
 			hash = hash();
 		}
 		return hash;
-	}
-
-	public String timestampConverter(long timestamp) {
-		Date date = new Date(timestamp);
-		Format dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-		return dateFormat.format(date);
 	}
 
 	// Getters and Setters
