@@ -82,7 +82,7 @@ public class Server {
 					blockchain.addBlock(transaction); // TODO CHECK THIS
 				} catch (UnknownHostException e) {
 					reply(socket, transaction, "ERR");
-					System.out.println(StringUtil.ANSI_RED + "[-] Error " + StringUtil.ANSI_RESET + "while processing transaction from " + StringUtil.ANSI_CYAN + getSocketIP(socket) + StringUtil.ANSI_RESET + " to " + StringUtil.ANSI_CYAN + transaction.getReceiverIP() + StringUtil.ANSI_RED + "\n--> Unknown host." + StringUtil.ANSI_RESET);
+					System.out.println(StringUtil.ANSI_RED + "[-] Error " + StringUtil.ANSI_RESET + "while processing transaction from " + StringUtil.ANSI_CYAN + getSocketIP(socket) + StringUtil.ANSI_RESET + " to " + StringUtil.ANSI_CYAN + transaction.getReceiverIP() + StringUtil.ANSI_RED + "\n--> Host unreachable." + StringUtil.ANSI_RESET);
 				} catch (Exception e) {
 					System.out.println(StringUtil.ANSI_RED + "[-] " + StringUtil.ANSI_RESET + "Client " + StringUtil.ANSI_CYAN + getSocketIP(socket) + StringUtil.ANSI_RED + " disconnected" + StringUtil.ANSI_RESET + ".");
 					for (Socket s : connectedClients) {
