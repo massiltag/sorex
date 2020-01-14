@@ -36,7 +36,7 @@ public class Block {
         return newBlock(StringUtil.zeros(64),data);
     }
 
-    // TODO add ProofOfWork + setHash + setNonce
+	// TODO setHash
     public static Block newBlock(String previousHash, Transaction transaction) {
         Block block = new Block(previousHash, transaction, Instant.now().getEpochSecond());
         // HERE
