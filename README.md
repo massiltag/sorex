@@ -6,7 +6,9 @@ Supervised by Maria POTOP-BUTUCARU.
 
 ### Abstract ###
 
-* In development
+* Centralized
+![Illustration](https://bitbucket.org/maxtag/sorex/raw/2b65f3c4610e7e6a3e64a3e032678d94caf6fbcd/img/Server.PNG)
+* [Presentation video](https://youtu.be/XClwtZQe-fs)
 
 ### Contribution guidelines ###
 
