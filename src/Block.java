@@ -29,7 +29,7 @@ public class Block {
 	}
 
 	public String toString() {
-		return "================================================================================\n"
+		return "=======================================" + getIndex() + "========================================\n"
 				+ "+ Index\t= " + getIndex() + "\n"
 				+ "+ Previous hash\t= " + this.getPreviousHash() + "\n"
 				+ "+ Transaction\t= " + this.getData().toString() + "\n"
