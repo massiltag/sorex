@@ -123,7 +123,7 @@ public class Client {
 					} else {    // Receiving Money
 						setBalance(getBalance() + transaction.getValue());
 						System.out.println("[+] Received " + transaction.getValue() + " from " + transaction.getSenderIP());
-						addNotification("[+] " + getDateTime() + " | Received " + transaction.getValue() + " from " + transaction.getSenderIP());
+						addNotification("[+] " + getDateTime() + " | Received " + transaction.getValue() + " SorEx from " + transaction.getSenderIP());
 					}
 				} catch (Exception e) {
 				}
