@@ -58,7 +58,7 @@ public class Server {
 				try {
 					ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
 					transaction = (Transaction) ois.readObject();
-					System.out.println(StringUtil.ANSI_BLUE + "[+]" + StringUtil.ANSI_RESET + "Received new transaction request : [" + StringUtil.ANSI_CYAN + transaction.getValue() + " SorEx]" + StringUtil.ANSI_RESET + " from " + StringUtil.ANSI_CYAN + getSocketIP(socket) + StringUtil.ANSI_RESET + " to " + StringUtil.ANSI_CYAN + transaction.getReceiverIP() + StringUtil.ANSI_RESET + ".");
+					System.out.println(StringUtil.ANSI_BLUE + "[+]" + StringUtil.ANSI_RESET + " Received new transaction request :" + StringUtil.ANSI_CYAN + " [" + transaction.getValue() + " SorEx]" + StringUtil.ANSI_RESET + " from " + StringUtil.ANSI_CYAN + getSocketIP(socket) + StringUtil.ANSI_RESET + " to " + StringUtil.ANSI_CYAN + transaction.getReceiverIP() + StringUtil.ANSI_RESET + ".");
 				} catch (IOException | ClassNotFoundException e) {
 					System.err.println("Error (58)"); // TODO DEL
 				}
@@ -76,7 +76,7 @@ public class Server {
 					receiver_oos.writeObject(transaction);
 
 					reply(socket, transaction, "ACK");
-					System.out.print(StringUtil.ANSI_GREEN + "[+] " + StringUtil.ANSI_CYAN + transaction.getValue() + StringUtil.ANSI_RESET + " SorEx coins transferred from " + StringUtil.ANSI_CYAN + getSocketIP(socket) + StringUtil.ANSI_RESET + " to " + StringUtil.ANSI_CYAN + getSocketIP(receiver) + StringUtil.ANSI_RESET + ".");
+					System.out.print(StringUtil.ANSI_GREEN + "[+] " + StringUtil.ANSI_CYAN + "[" + transaction.getValue() + " SorEx]" + StringUtil.ANSI_RESET + " coins transferred from " + StringUtil.ANSI_CYAN + getSocketIP(socket) + StringUtil.ANSI_RESET + " to " + StringUtil.ANSI_CYAN + getSocketIP(receiver) + StringUtil.ANSI_RESET + ".");
 
 					blockchain.addBlock(transaction); // TODO CHECK THIS
 				} catch (UnknownHostException e) {
