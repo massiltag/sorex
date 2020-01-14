@@ -25,7 +25,7 @@ public class Server {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		System.out.println("Server running on port " + port);
+		System.out.println("Running " + StringUtil.ANSI_BLUE + "Sor" + StringUtil.ANSI_RED + "Ex" + StringUtil.ANSI_RESET + " Server on port " + port);
 	}
 
 	private static void connectionListener() {
@@ -46,7 +46,7 @@ public class Server {
 
 	private static Socket acceptConnect(ServerSocket serverSocket) throws Exception {
 		Socket clientSocket = serverSocket.accept();
-		System.out.println("[+] New connection accepted from " + getSocketIP(clientSocket));
+		System.out.println(StringUtil.ANSI_BLUE + "[+]" + StringUtil.ANSI_RESET + " New connection accepted from " + StringUtil.ANSI_GREEN + getSocketIP(clientSocket) + StringUtil.ANSI_RESET);
 		return clientSocket;
 	}
 
@@ -58,7 +58,7 @@ public class Server {
 				try {
 					ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
 					transaction = (Transaction) ois.readObject();
-					System.out.println("[+] Received new transaction request : [" + transaction.getValue() + " SorEx] from " + getSocketIP(socket) + " to " + transaction.getReceiverIP() + ".");
+					System.out.println(StringUtil.ANSI_BLUE + "[+]" + StringUtil.ANSI_RESET + "Received new transaction request : [" + StringUtil.ANSI_CYAN + transaction.getValue() + " SorEx]" + StringUtil.ANSI_RESET + " from " + StringUtil.ANSI_CYAN + getSocketIP(socket) + StringUtil.ANSI_RESET + " to " + StringUtil.ANSI_CYAN + transaction.getReceiverIP() + StringUtil.ANSI_RESET + ".");
 				} catch (IOException | ClassNotFoundException e) {
 					System.err.println("Error (58)"); // TODO DEL
 				}
@@ -76,13 +76,14 @@ public class Server {
 					receiver_oos.writeObject(transaction);
 
 					reply(socket, transaction, "ACK");
-					System.out.print("[+] " + transaction.getValue() + " SorEx coins transferred from " + getSocketIP(socket) + " to " + getSocketIP(receiver) + ".");
+					System.out.print(StringUtil.ANSI_GREEN + "[+] " + StringUtil.ANSI_CYAN + transaction.getValue() + StringUtil.ANSI_RESET + " SorEx coins transferred from " + StringUtil.ANSI_CYAN + getSocketIP(socket) + StringUtil.ANSI_RESET + " to " + StringUtil.ANSI_CYAN + getSocketIP(receiver) + StringUtil.ANSI_RESET + ".");
 
 					blockchain.addBlock(transaction); // TODO CHECK THIS
 				} catch (UnknownHostException e) {
 					reply(socket, transaction, "ERR");
-					System.out.print("[-] Error while processing transaction from " + getSocketIP(socket) + " to " + transaction.getReceiverIP() + "\n[ ] Unknown host.");
+					System.out.print(StringUtil.ANSI_RED + "[-] Error " + StringUtil.ANSI_RESET + "while processing transaction from " + StringUtil.ANSI_CYAN + getSocketIP(socket) + StringUtil.ANSI_RESET + " to " + StringUtil.ANSI_CYAN + transaction.getReceiverIP() + StringUtil.ANSI_RED + "\n[ ] Unknown host." + StringUtil.ANSI_RESET);
 				} catch (Exception e) {
+					System.out.println("EXCEPTION (86)");
 				}
 			}
 		};
