@@ -1,3 +1,7 @@
+package architecture;
+
+import blockchain.Transaction;
+
 import java.net.*;
 import java.io.*;
 import java.text.DateFormat;
@@ -7,7 +11,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
-public class Client {
+public class SorexClient {
 	private final static int serverPort = 3025;
 
 	private static String serverIP;
@@ -22,7 +26,7 @@ public class Client {
 
 	public static void main(String[] args) throws Exception {
 		Scanner sc = new Scanner(System.in);
-		System.out.print("Server IP : ");
+		System.out.print("architecture.Server IP : ");
 		serverIP = sc.nextLine();
 
 		// Starting Threads
@@ -32,7 +36,7 @@ public class Client {
 		// Main Menu
 		String choice;
 		do {
-			System.out.println("Welcome to SorEx Client.");
+			System.out.println("Welcome to SorEx architecture.Client.");
 			System.out.println("[+] Main menu");
 			System.out.println("\t[1] Check balance");
 			System.out.println("\t[2] Check notifications");
@@ -108,7 +112,7 @@ public class Client {
 			Transaction transaction = new Transaction(getIP(), destAddress, amount);
 			oos.writeObject(transaction);
 		}
-		}
+	}
 
 	public static void transactionReceiver(Socket socket) {
 		Runnable task = () -> {
@@ -174,7 +178,7 @@ public class Client {
 	}
 
 	public static void setServerIP(String serverIP) {
-		Client.serverIP = serverIP;
+		SorexClient.serverIP = serverIP;
 	}
 
 	public static double getBalance() {
@@ -182,7 +186,7 @@ public class Client {
 	}
 
 	public static void setBalance(double balance) {
-		Client.balance = balance;
+		SorexClient.balance = balance;
 	}
 
 	public Socket getClientSocket() {
@@ -202,7 +206,7 @@ public class Client {
 	}
 
 	public static void setClientIP(String clientIP) {
-		Client.clientIP = clientIP;
+		SorexClient.clientIP = clientIP;
 	}
 
 	public static List<String> getNotifications() {

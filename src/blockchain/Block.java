@@ -1,8 +1,8 @@
-import java.text.DateFormat;
-import java.text.Format;
-import java.text.SimpleDateFormat;
+package blockchain;
+
+import util.StringUtil;
+
 import java.time.Instant;
-import java.util.Date;
 
 public class Block {
 	static int nbBlocks = 0;
@@ -32,7 +32,7 @@ public class Block {
 		return "=========================================== " + getIndex() + " ============================================\n"
 				+ "+ Index\t\t= " + getIndex() + "\n"
 				+ "+ Previous hash\t= " + this.getPreviousHash() + "\n"
-				+ "+ Transaction\t= " + this.getData().toString() + "\n"
+				+ "+ blockchain.Transaction\t= " + this.getData().toString() + "\n"
 				+ "+ Timestamp\t= " + StringUtil.timestampConverter(this.getTimestamp()) + "\n"
 				+ "+ Nonce\t\t= " + getNonce() + "\n"
 				+ "+ Hash\t\t= " + getHash() + "\n"

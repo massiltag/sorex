@@ -1,10 +1,17 @@
+package architecture;
+
+import blockchain.Block;
+import blockchain.Blockchain;
+import blockchain.Transaction;
+import util.StringUtil;
+
 import java.net.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Server {
+public class SorexServer {
 	private final static int port = 3025;
 
 	public static Blockchain blockchain = Blockchain.getInstance(1);
@@ -17,7 +24,7 @@ public class Server {
 		System.out.print("Welcome to\n" + StringUtil.ANSI_PURPLE);
 		showIntro();
 		System.out.print(StringUtil.ANSI_RESET);
-		System.out.println(" - Enter [" + StringUtil.ANSI_YELLOW + "show" + StringUtil.ANSI_RESET + "] to show Blockchain\n" +
+		System.out.println(" - Enter [" + StringUtil.ANSI_YELLOW + "show" + StringUtil.ANSI_RESET + "] to show blockchain.Blockchain\n" +
 				" - Enter [" + StringUtil.ANSI_YELLOW + "verify" + StringUtil.ANSI_RESET + "] to verify blockchain. \n" +
 				" - Enter [" + StringUtil.ANSI_YELLOW + "stop" + StringUtil.ANSI_RESET + "] to stop server.");
 		initSocket();
@@ -33,7 +40,7 @@ public class Server {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		System.out.println("Running " + StringUtil.ANSI_BLUE + "Sor" + StringUtil.ANSI_RED + "Ex" + StringUtil.ANSI_RESET + " Server on port " + port + " (" + StringUtil.ANSI_PURPLE + getIP() + StringUtil.ANSI_RESET + ")");
+		System.out.println("Running " + StringUtil.ANSI_BLUE + "Sor" + StringUtil.ANSI_RED + "Ex" + StringUtil.ANSI_RESET + " architecture.Server on port " + port + " (" + StringUtil.ANSI_PURPLE + getIP() + StringUtil.ANSI_RESET + ")");
 	}
 
 	private static void connectionListener() {
@@ -92,7 +99,7 @@ public class Server {
 					reply(socket, transaction, "ERR");
 					System.out.println(StringUtil.ANSI_RED + "[-] Error " + StringUtil.ANSI_RESET + "while processing transaction from " + StringUtil.ANSI_CYAN + getSocketIP(socket) + StringUtil.ANSI_RESET + " to " + StringUtil.ANSI_CYAN + transaction.getReceiverIP() + StringUtil.ANSI_RED + "\n--> Host unreachable." + StringUtil.ANSI_RESET);
 				} catch (Exception e) {
-					System.out.println(StringUtil.ANSI_RED + "[-] " + StringUtil.ANSI_RESET + "Client " + StringUtil.ANSI_CYAN + getSocketIP(socket) + StringUtil.ANSI_RED + " disconnected" + StringUtil.ANSI_RESET + ".");
+					System.out.println(StringUtil.ANSI_RED + "[-] " + StringUtil.ANSI_RESET + "architecture.Client " + StringUtil.ANSI_CYAN + getSocketIP(socket) + StringUtil.ANSI_RED + " disconnected" + StringUtil.ANSI_RESET + ".");
 					for (Socket s : connectedClients) {
 						if (getSocketIP(s).equals(getSocketIP(socket))) {
 							connectedClients.remove(s);
@@ -131,9 +138,9 @@ public class Server {
 					case "verify":
 						boolean ok = blockchain.verify();
 						if (ok)
-							System.out.println("Blockchain is " + StringUtil.ANSI_GREEN + "OK" + StringUtil.ANSI_RESET + ".");
+							System.out.println("blockchain.Blockchain is " + StringUtil.ANSI_GREEN + "OK" + StringUtil.ANSI_RESET + ".");
 						else
-							System.out.println("Blockchain is " + StringUtil.ANSI_RED + "KO" + StringUtil.ANSI_RESET + ".");
+							System.out.println("blockchain.Blockchain is " + StringUtil.ANSI_RED + "KO" + StringUtil.ANSI_RESET + ".");
 						break;
 					case "stop":
 						exit();
@@ -167,7 +174,7 @@ public class Server {
 
 	public static void showIntro() {
 		try {
-			BufferedReader reader = new BufferedReader(new FileReader("./SorEx.txt"));
+			BufferedReader reader = new BufferedReader(new FileReader("util/SorEx.txt"));
 			String buffer;
 			while ((buffer = reader.readLine()) != null) {
 				System.out.println(buffer);

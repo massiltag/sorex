@@ -1,3 +1,5 @@
+package util;
+
 import java.nio.CharBuffer;
 import java.security.MessageDigest;
 import java.text.Format;
