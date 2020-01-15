@@ -52,7 +52,8 @@ public class SorexServer {
 					connectedClients.add(socket);
 					receiveAndSendTransaction(socket);
 				} catch (Exception e) {
-					System.err.println("Connection Error (34)");
+					System.out.println(StringUtil.ANSI_RED + "[-] Server Stopped." + StringUtil.ANSI_RESET);
+					exit();
 				}
 			}
 		};
