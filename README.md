@@ -1,6 +1,6 @@
 # README #
 
-![Logo](https://bitbucket.org/maxtag/sorex/raw/3f5e09337bd4f47f2a41adb80163f78d40f0a4cc/img/logo/SorEx.png)
+![Logo](https://bitbucket.org/maxtag/sorex/raw/3f5e09337bd4f47f2a41adb80163f78d40f0a4cc/img/logo/SorEx.png)  
 SorEx is a Blockchain, made for educational purposes by Sorbonne University undergraduate students.
 Supervised by Maria POTOP-BUTUCARU.
 
@@ -16,6 +16,7 @@ Supervised by Maria POTOP-BUTUCARU.
 * [Website](http://dragon-eye.mediadev.info/)
 
 ### How to install ###
+Follow these instructions :  
 * Compiling sources
 ```bash
 javac -cp ./ util/*.java
