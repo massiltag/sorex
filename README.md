@@ -16,7 +16,6 @@ Supervised by Maria POTOP-BUTUCARU.
 * [Website](http://dragon-eye.mediadev.info/)
 
 ### How to install ###
-Follow these instructions :  
 * Compiling sources
 ```bash
 cd src
