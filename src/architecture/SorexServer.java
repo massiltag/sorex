@@ -24,8 +24,8 @@ public class SorexServer {
 		System.out.print("Welcome to\n" + StringUtil.ANSI_PURPLE);
 		showIntro();
 		System.out.print(StringUtil.ANSI_RESET);
-		System.out.println(" - Enter [" + StringUtil.ANSI_YELLOW + "show" + StringUtil.ANSI_RESET + "] to show blockchain.Blockchain\n" +
-				" - Enter [" + StringUtil.ANSI_YELLOW + "verify" + StringUtil.ANSI_RESET + "] to verify blockchain. \n" +
+		System.out.println(" - Enter [" + StringUtil.ANSI_YELLOW + "show" + StringUtil.ANSI_RESET + "] to show Blockchain\n" +
+				" - Enter [" + StringUtil.ANSI_YELLOW + "verify" + StringUtil.ANSI_RESET + "] to verify Blockchain. \n" +
 				" - Enter [" + StringUtil.ANSI_YELLOW + "stop" + StringUtil.ANSI_RESET + "] to stop server.");
 		initSocket();
 
@@ -40,7 +40,7 @@ public class SorexServer {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		System.out.println("Running " + StringUtil.ANSI_BLUE + "Sor" + StringUtil.ANSI_RED + "Ex" + StringUtil.ANSI_RESET + " architecture.Server on port " + port + " (" + StringUtil.ANSI_PURPLE + getIP() + StringUtil.ANSI_RESET + ")");
+		System.out.println("Running " + StringUtil.ANSI_BLUE + "Sor" + StringUtil.ANSI_RED + "Ex" + StringUtil.ANSI_RESET + " Server on port " + port + " (" + StringUtil.ANSI_PURPLE + getIP() + StringUtil.ANSI_RESET + ")");
 	}
 
 	private static void connectionListener() {
@@ -94,7 +94,7 @@ public class SorexServer {
 					reply(socket, transaction, "ACK");
 					System.out.println(StringUtil.ANSI_GREEN + "[+] " + StringUtil.ANSI_CYAN + "[" + transaction.getValue() + " SorEx]" + StringUtil.ANSI_RESET + " coins transferred from " + StringUtil.ANSI_CYAN + getSocketIP(socket) + StringUtil.ANSI_RESET + " to " + StringUtil.ANSI_CYAN + getSocketIP(receiver) + StringUtil.ANSI_RESET + ".");
 
-					blockchain.addBlock(transaction); // TODO CHECK THIS
+					blockchain.addBlock(transaction);
 				} catch (UnknownHostException e) {
 					reply(socket, transaction, "ERR");
 					System.out.println(StringUtil.ANSI_RED + "[-] Error " + StringUtil.ANSI_RESET + "while processing transaction from " + StringUtil.ANSI_CYAN + getSocketIP(socket) + StringUtil.ANSI_RESET + " to " + StringUtil.ANSI_CYAN + transaction.getReceiverIP() + StringUtil.ANSI_RED + "\n--> Host unreachable." + StringUtil.ANSI_RESET);
@@ -138,9 +138,9 @@ public class SorexServer {
 					case "verify":
 						boolean ok = blockchain.verify();
 						if (ok)
-							System.out.println("blockchain.Blockchain is " + StringUtil.ANSI_GREEN + "OK" + StringUtil.ANSI_RESET + ".");
+							System.out.println("Blockchain is " + StringUtil.ANSI_GREEN + "OK" + StringUtil.ANSI_RESET + ".");
 						else
-							System.out.println("blockchain.Blockchain is " + StringUtil.ANSI_RED + "KO" + StringUtil.ANSI_RESET + ".");
+							System.out.println("Blockchain is " + StringUtil.ANSI_RED + "KO" + StringUtil.ANSI_RESET + ".");
 						break;
 					case "stop":
 						exit();

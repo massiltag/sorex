@@ -26,7 +26,7 @@ public class SorexClient {
 
 	public static void main(String[] args) throws Exception {
 		Scanner sc = new Scanner(System.in);
-		System.out.print("architecture.Server IP : ");
+		System.out.print("Server IP : ");
 		serverIP = sc.nextLine();
 
 		// Starting Threads
@@ -36,7 +36,7 @@ public class SorexClient {
 		// Main Menu
 		String choice;
 		do {
-			System.out.println("Welcome to SorEx architecture.Client.");
+			System.out.println("Welcome to SorEx Client.");
 			System.out.println("[+] Main menu");
 			System.out.println("\t[1] Check balance");
 			System.out.println("\t[2] Check notifications");

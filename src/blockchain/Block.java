@@ -32,7 +32,7 @@ public class Block {
 		return "=========================================== " + getIndex() + " ============================================\n"
 				+ "+ Index\t\t= " + getIndex() + "\n"
 				+ "+ Previous hash\t= " + this.getPreviousHash() + "\n"
-				+ "+ blockchain.Transaction\t= " + this.getData().toString() + "\n"
+				+ "+ Transaction\t= " + this.getData().toString() + "\n"
 				+ "+ Timestamp\t= " + StringUtil.timestampConverter(this.getTimestamp()) + "\n"
 				+ "+ Nonce\t\t= " + getNonce() + "\n"
 				+ "+ Hash\t\t= " + getHash() + "\n"
