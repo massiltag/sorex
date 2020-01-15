@@ -19,9 +19,8 @@ Supervised by Maria POTOP-BUTUCARU.
 Follow these instructions :  
 * Compiling sources
 ```bash
-javac -cp ./ util/*.java
-javac -cp ./ blockchain/*
-javac -cp ./ architecture/*
+cd src
+javac -cp ./ util/*.java && javac -cp ./ blockchain/*.java && javac -cp ./ architecture/*.java
 ```
 * Launching Client
 ```bash
