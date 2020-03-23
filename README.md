@@ -30,7 +30,7 @@ java architecture/SorexClient
 java architecture/SorexServer
 ```
 
-### Contribution guidelines ###
+### Contribution ###
 
 * [Massil TAGUEMOUT](mailto:maxtag@vivaldi.net)
 * [Gabriel LEFFAD](mailto:gabylef@hotmail.fr)
