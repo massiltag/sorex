@@ -1,8 +1,8 @@
 # README #
 
 ![Logo](https://bitbucket.org/maxtag/sorex/raw/3f5e09337bd4f47f2a41adb80163f78d40f0a4cc/img/logo/SorEx.png)  
-SorEx is a Blockchain, made for educational purposes by Sorbonne University undergraduate students.
-Supervised by [Maria POTOP-BUTUCARU](https://www.lip6.fr/actualite/personnes-fiche.php?ident=P246) (LIP6)
+SorEx is a Blockchain, made for educational purposes by a Sorbonne University undergraduate student.  
+Supervised by [Maria POTOP-BUTUCARU](https://www.lip6.fr/actualite/personnes-fiche.php?ident=P246) ([LIP6](https://www.lip6.fr/))
 
 
 ### Abstract ###
@@ -30,5 +30,5 @@ java architecture/SorexServer
 ### Author ###
 
 [Massil Taguemout](https://www.linkedin.com/in/mtag/)  
-Apprenti DÃ©veloppeur SI @ [GRTgaz](http://www.grtgaz.com/)  
-Licence DANT, [Sorbonne UniversitÃ©](http://www.sorbonne-universite.fr/)
+Apprenti Développeur SI @ [GRTgaz](http://www.grtgaz.com/)  
+Licence DANT, [Sorbonne Université](http://www.sorbonne-universite.fr/)
